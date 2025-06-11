@@ -6,7 +6,7 @@ import (
 )
 
 func TestSubs_Publish(t *testing.T) {
-	defer ShouldNotLeaked(SetupLeakDetection())
+	defer ShouldNotLeak(SetupLeakDetection())
 	t.Run("without subs", func(t *testing.T) {
 		s := newSubs()
 		s.Publish("aa", PubSubMessage{}) // just no block
@@ -58,7 +58,7 @@ func TestSubs_Publish(t *testing.T) {
 }
 
 func TestSubs_Unsubscribe(t *testing.T) {
-	defer ShouldNotLeaked(SetupLeakDetection())
+	defer ShouldNotLeak(SetupLeakDetection())
 	s := newSubs()
 	ch, _ := s.Subscribe([]string{"1", "2"})
 	go func() {
